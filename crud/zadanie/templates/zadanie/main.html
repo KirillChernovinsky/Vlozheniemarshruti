@@ -23,8 +23,17 @@
 <body>
     <h4>
         <a href="{% url 'create' %}">Создать пост)</a>
+        <p></p>
+        <a href="{% url 'popular_posts' %}">Популярные посты</a>
+        <p></p>
+        <a href="{% url 'popular_posts' %}">Последний пост</a>
+        <p></p>
+        <a href="{% url 'registr' %}">Регистрация</a>
+        <p></p>
+        <a href="{% url 'vhod' %}">Вход</a>
     </h4>
     <div class="conteiner">
+
 
             {% for i in news %}
 
@@ -36,6 +45,15 @@
                 </p>
 
                 <a href="{% url 'delete' i.id %}">Удалить</a>
+                <a href="{% url 'update' i.id %}">Сделать популярным</a>
+
+
+            <form>
+                {{ men }}
+                <button>Отправить</button>
+            </form>
+
+            <a href="{% url 'update' i.id %}">Добавить лайк</a>
 
                 <hr>
             {% endfor %}
