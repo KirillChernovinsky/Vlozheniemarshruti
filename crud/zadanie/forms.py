@@ -1,19 +1,23 @@
 from django import forms
+from django.forms import ModelForm
+
+from .models import News, Person, Comment
 
 
-class AddForm(forms.Form):
+class NewsForm(ModelForm):
+    class Meta:
+        model = News
+        fields = ['post_name', 'post_description', 'post_img', 'popular']
 
 
-    post_name = forms.CharField(max_length=100)
-    post_description = forms.CharField(max_length=5000)
-    post_img = forms.URLField()
-    popular = forms.CharField(max_length=3)
-
-class UserForm(forms.Form):
-    email = forms.EmailField(required=False, label="Введите email")
-    password = forms.CharField(label='Введите пароль')
+class UserForm(ModelForm):
+    class Meta:
+        model = Person
+        fields = ['email', 'password']
 
 
-class Comment(forms.Form):
-    Comment = forms.CharField(max_length=50)
-    like = forms.CharField(max_length=3)
+class CommentForm(ModelForm):
+    class Meta:
+        model= Comment
+        fields = ['Comment', 'like']
+
